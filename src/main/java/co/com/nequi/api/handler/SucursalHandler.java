@@ -1,9 +1,8 @@
-package co.com.nequi.api_franchises.handler;
+package co.com.nequi.api.handler;
 
-import co.com.nequi.api_franchises.entity.Franchise;
-import co.com.nequi.api_franchises.entity.Sucursal;
-import co.com.nequi.api_franchises.repository.FranchiseRepository;
-import co.com.nequi.api_franchises.repository.SucursalRepository;
+import co.com.nequi.api.entity.Sucursal;
+import co.com.nequi.api.repository.FranchiseRepository;
+import co.com.nequi.api.repository.SucursalRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
