@@ -1,10 +1,10 @@
-package co.com.nequi.api_franchises.handler;
+package co.com.nequi.api.handler;
 
-import co.com.nequi.api_franchises.entity.Product;
-import co.com.nequi.api_franchises.entity.Sucursal;
-import co.com.nequi.api_franchises.repository.FranchiseRepository;
-import co.com.nequi.api_franchises.repository.ProductRepository;
-import co.com.nequi.api_franchises.repository.SucursalRepository;
+import co.com.nequi.api.entity.Product;
+import co.com.nequi.api.entity.Sucursal;
+import co.com.nequi.api.repository.FranchiseRepository;
+import co.com.nequi.api.repository.ProductRepository;
+import co.com.nequi.api.repository.SucursalRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -22,8 +22,8 @@ public class ProductHandler {
     private final SucursalRepository sucursalRepository;
     private final FranchiseRepository franchiseRepository;
 
-
-    public ProductHandler(ProductRepository productRepository, SucursalRepository sucursalRepository,
+    public ProductHandler(ProductRepository productRepository,
+                          SucursalRepository sucursalRepository,
                           FranchiseRepository franchiseRepository) {
         this.productRepository = productRepository;
         this.sucursalRepository = sucursalRepository;

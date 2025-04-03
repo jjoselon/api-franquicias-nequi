@@ -1,6 +1,6 @@
-package co.com.nequi.api_franchises.router;
+package co.com.nequi.api.router;
 
-import co.com.nequi.api_franchises.handler.ProductHandler;
+import co.com.nequi.api.handler.ProductHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -20,4 +20,5 @@ public class ProductRouter {
                 .GET("/franchises/{franchiseId}/max-stock-products", handler::getMaxStockProductBySucursal)
                 .build();
     }
+
 }

@@ -1,6 +1,6 @@
-package co.com.nequi.api_franchises.repository;
+package co.com.nequi.api.repository;
 
-import co.com.nequi.api_franchises.entity.Franchise;
+import co.com.nequi.api.entity.Franchise;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

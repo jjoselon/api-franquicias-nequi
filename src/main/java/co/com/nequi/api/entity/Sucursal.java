@@ -1,7 +1,15 @@
-package co.com.nequi.api_franchises.entity;
+package co.com.nequi.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.CascadeType;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,7 +38,7 @@ public class Sucursal {
     private Franchise franchise;
 
     @OneToMany(mappedBy = "sucursal", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore  // <-- Evita la carga de la colección cuando se serializa
+    @JsonIgnore  // Evita la carga de la colección cuando se serializa
     private List<Product> productos = new ArrayList<>();
 }
 

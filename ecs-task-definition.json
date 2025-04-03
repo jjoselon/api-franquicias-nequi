@@ -1,0 +1,57 @@
+{
+  "family": "mi-app-task-1",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "executionRoleArn": "arn:aws:iam::299237350615:role/ecsTaskExecutionRole",
+  "cpu": "1024",
+  "memory": "2048",
+  "containerDefinitions": [
+    {
+      "name": "db",
+      "image": "mysql:8.0",
+      "memory": 1024,
+      "cpu": 512,
+      "essential": true,
+      "environment": [
+        {"name": "MYSQL_ROOT_PASSWORD", "value": "root"},
+        {"name": "MYSQL_DATABASE", "value": "db"},
+        {"name": "MYSQL_USER", "value": "user"},
+        {"name": "MYSQL_PASSWORD", "value": "password"}
+      ],
+      "portMappings": [{"containerPort": 3306}],
+      "healthCheck": {
+        "command": ["CMD", "mysqladmin", "ping", "-h", "localhost"],
+        "interval": 10,
+        "timeout": 5,
+        "retries": 3
+      }
+    },
+    {
+      "name": "app",
+      "image": "299237350615.dkr.ecr.us-east-1.amazonaws.com/mi-app:latest",
+      "memory": 1024,
+      "cpu": 512,
+      "essential": true,
+      "dependsOn": [
+        {
+          "containerName": "db",
+          "condition": "HEALTHY"
+        }
+      ],
+      "environment": [
+        {"name": "SPRING_DATASOURCE_URL", "value": "jdbc:mysql://db.ecs.local:3306/db"},
+        {"name": "SPRING_DATASOURCE_USERNAME", "value": "user"},
+        {"name": "SPRING_DATASOURCE_PASSWORD", "value": "password"}
+      ],
+      "portMappings": [{"containerPort": 8080}],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/mi-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}

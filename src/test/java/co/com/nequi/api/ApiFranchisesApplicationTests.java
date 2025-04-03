@@ -1,4 +1,4 @@
-package co.com.nequi.api_franchises;
+package co.com.nequi.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

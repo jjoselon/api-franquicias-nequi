@@ -1,7 +1,7 @@
-package co.com.nequi.api_franchises.handler;
+package co.com.nequi.api.handler;
 
-import co.com.nequi.api_franchises.entity.Franchise;
-import co.com.nequi.api_franchises.repository.FranchiseRepository;
+import co.com.nequi.api.entity.Franchise;
+import co.com.nequi.api.repository.FranchiseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,6 @@ public class FranchiseHandler {
                         .subscribeOn(Schedulers.boundedElastic()))
                 .flatMap(franchise -> ServerResponse.status(HttpStatus.CREATED).bodyValue(franchise));
     }
-
 
     public Mono<ServerResponse> updateFranchiseName(ServerRequest request) {
         Long franchiseId = Long.parseLong(request.pathVariable("franchiseId"));
