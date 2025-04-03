@@ -14,9 +14,9 @@ public class ProductRouter {
     public RouterFunction<ServerResponse> productRoutes(ProductHandler handler) {
         return RouterFunctions.route()
                 .POST("/products/add", handler::addProductToSucursal)
-                .PUT("/products/{id}/stock", handler::updateStock)
+                .PUT("/products/{productId}/stock", handler::updateStock)
                 .PUT("/products/{productId}", handler::updateProductName)
-                .DELETE("/products/{id}", handler::deleteProductFromSucursal)
+                .DELETE("/products/{productId}", handler::deleteProductFromSucursal)
                 .GET("/franchises/{franchiseId}/max-stock-products", handler::getMaxStockProductBySucursal)
                 .build();
     }

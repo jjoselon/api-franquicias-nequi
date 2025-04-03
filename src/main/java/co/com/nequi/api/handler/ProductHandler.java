@@ -44,7 +44,7 @@ public class ProductHandler {
     }
 
     public Mono<ServerResponse> deleteProductFromSucursal(ServerRequest request) {
-        Long productId = Long.parseLong(request.pathVariable("id"));
+        Long productId = Long.parseLong(request.pathVariable("productId"));
 
         return Mono.fromCallable(() -> productRepository.findById(productId))
                 .subscribeOn(Schedulers.boundedElastic())
@@ -60,7 +60,7 @@ public class ProductHandler {
     }
 
     public Mono<ServerResponse> updateStock(ServerRequest request) {
-        Long productId = Long.parseLong(request.pathVariable("id"));
+        Long productId = Long.parseLong(request.pathVariable("productId"));
 
         return request.bodyToMono(Integer.class) // Leemos el stock directamente como un Integer
                 .flatMap(newStock -> Mono.fromCallable(() -> productRepository.findById(productId))

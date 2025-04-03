@@ -15,7 +15,6 @@ public class SucursalRouter {
         return RouterFunctions.route()
                 .POST("/sucursal", handler::createSucursal)
                 .PUT("/sucursal/{sucursalId}", handler::updateSucursalName)
-                .GET("/sucursal/prueba/{sucursalId}", handler::getSucursalById)
                 .build();
     }
 
